@@ -1,4 +1,4 @@
-import { builder } from "./graphql/builder";
+import { builder } from "./builder";
 import { writeFileSync } from "fs";
 import { resolve } from "path";
 import { printSchema } from "graphql";
