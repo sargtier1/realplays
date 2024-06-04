@@ -2,9 +2,11 @@ import { Scalars } from "prisma-generator-pothos-codegen";
 import { Prisma } from ".prisma/client";
 import SchemaBuilder from "@pothos/core";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";
+import { prisma } from "../db";
+import PrismaPlugin from "@pothos/plugin-prisma";
 
 export const builder = new SchemaBuilder<{
-  // ... Context, plugins? ...
+  context: { prisma: typeof prisma };
   PrismaTypes: PrismaTypes; // required for @pothos/plugin-prisma integration (which is required)
   Scalars: Scalars<
     Prisma.Decimal,
@@ -12,5 +14,8 @@ export const builder = new SchemaBuilder<{
     Prisma.InputJsonValue
   >; // required to define correct types for created scalars.
 }>({
-  // Other builder config
+  plugins: [PrismaPlugin],
+  prisma: {
+    client: prisma,
+  },
 });
