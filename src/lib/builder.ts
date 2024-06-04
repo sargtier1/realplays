@@ -2,7 +2,7 @@ import { Scalars } from "prisma-generator-pothos-codegen";
 import { Prisma } from ".prisma/client";
 import SchemaBuilder from "@pothos/core";
 import type PrismaTypes from "@pothos/plugin-prisma/generated";
-import { prisma } from "../db";
+import { prisma } from "./db";
 import PrismaPlugin from "@pothos/plugin-prisma";
 
 export const builder = new SchemaBuilder<{
